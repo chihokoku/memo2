@@ -16,14 +16,11 @@ const App = () =>  {
   },[]);
 
   // メモを追加するハンドラ
-  const onClickAdd = useCallback((e) => {
-    // const newMemos = [...memos];
-    // newMemos.push(text);
-    // setMemos(newMemos);
-    e.preventDefault();
+  const onClickAdd = useCallback(() => {
     addTodo(text);
+    // クリック時にformが空にならない
     setText("");
-  },[]);
+  },[text]);
 
   
   const onClickDelete = useCallback((index) => {
