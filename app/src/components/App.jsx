@@ -1,10 +1,10 @@
-import { useState, useCallback, memo } from "react";
+import { useState, useCallback } from "react";
 import {MemoList} from "./MemoList"
 import {useMemoList} from "../hooks/useMemoList";
 import {Title} from "./Title"
 import { MemoForm } from "./MemoForm"
  
-export const App = memo(() =>  {
+const App = () =>  {
   
   const { memos, addTodo, deleteTodo } = useMemoList();
   // const [memos, setMemos] = useState([]);
@@ -16,10 +16,11 @@ export const App = memo(() =>  {
   },[]);
 
   // メモを追加するハンドラ
-  const onClickAdd = useCallback(() => {
+  const onClickAdd = useCallback((e) => {
     // const newMemos = [...memos];
     // newMemos.push(text);
     // setMemos(newMemos);
+    e.preventDefault();
     addTodo(text);
     setText("");
   },[]);
@@ -33,8 +34,10 @@ export const App = memo(() =>  {
   return (
     <div>
       <Title title="簡単メモアプリ"/>
-      <MemoForm onClickAdd={onClickAdd} onChangeText={onChangeText}/>
+      <MemoForm onClickAdd={onClickAdd}  onChangeText={onChangeText}/>
       <MemoList memos={memos} onClickDelete={onClickDelete} />
     </div>
   );
-});
+};
+
+export default App;

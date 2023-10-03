@@ -1,7 +1,7 @@
-import { memo } from "react";
 
 
-export const MemoList = memo((props) => {
+
+export const MemoList = (props) => {
 
   const { memos, onClickDelete } = props;
 
@@ -18,4 +18,4 @@ export const MemoList = memo((props) => {
         </ul>
       </div>
   );
-});
+};

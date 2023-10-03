@@ -1,7 +1,7 @@
-import { memo } from "react";
+// import { memo } from "react";
 
 
-export const MemoForm = memo((props) => {
+export const MemoForm = (props) => {
 
   return(
     <form>
@@ -9,4 +9,4 @@ export const MemoForm = memo((props) => {
       <button onClick={props.onClickAdd}>追加</button>
     </form>
   );
-});
+};
