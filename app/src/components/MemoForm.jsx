@@ -1,9 +1,6 @@
-// import { useState } from "react";
-
 
 export const MemoForm = (props) => {
 
-  // const [text, setText] = useState("");
 
   return(
     <div>

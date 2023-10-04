@@ -1,6 +1,3 @@
-
-
-
 export const MemoList = (props) => {
 
   const { memos, onClickDelete } = props;

@@ -31,7 +31,8 @@ const App = () =>  {
   return (
     <div>
       <Title title="簡単メモアプリ"/>
-      <MemoForm onClickAdd={onClickAdd}  onChangeText={onChangeText}/>
+      {/* useStateを使用した関数を渡す際にはuseStateの変数と関数を渡す必要あり */}
+      <MemoForm text={text} setText={setText} onClickAdd={onClickAdd}  onChangeText={onChangeText}/>
       <MemoList memos={memos} onClickDelete={onClickDelete} />
     </div>
   );
