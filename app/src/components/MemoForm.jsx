@@ -1,11 +1,22 @@
+import { useState } from "react";
 
-export const MemoForm = (props) => {
+export const MemoForm = ({ addTodo }) => {
+  const [text, setText] = useState("");
 
+  // テキストボックスの値が変更されたときのハンドラ
+  const onChangeText = (e) => {
+    setText(e.target.value);
+  };
 
-  return(
+  const onClick = () => {
+    addTodo(text);
+    setText("");
+  };
+
+  return (
     <div>
-      <input type="text" value={props.text} onChange={props.onChangeText} />
-      <button onClick={props.onClickAdd}>追加</button>
+      <input type="text" value={text} onChange={onChangeText} />
+      <button onClick={onClick}>追加</button>
     </div>
   );
 };

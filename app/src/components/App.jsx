@@ -1,37 +1,18 @@
-import { useState, useCallback } from "react";
-import { MemoList } from "./MemoList"
+import { MemoList } from "./MemoList";
 import { useMemoList } from "../hooks/useMemoList";
-import { Title } from "./Title"
-import { MemoForm } from "./MemoForm"
- 
-const App = () =>  {
-  
+import { Title } from "./Title";
+import { MemoForm } from "./MemoForm";
+
+// 子の値を親で受け取る
+
+const App = () => {
   const { memos, addTodo, deleteTodo } = useMemoList();
-  const [text, setText] = useState("");
-
-  // テキストボックスの値が変更されたときのハンドラ
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  },[]);
-
-  // メモを追加するハンドラ
-  const onClickAdd = useCallback(() => {
-    addTodo(text);
-    setText("");
-  },[text]);
-
-  
-  const onClickDelete = useCallback((index) => {
-    deleteTodo(index);
-  }, [deleteTodo]);
-
 
   return (
     <div>
-      <Title title="簡単メモアプリ"/>
-      {/* useStateを使用した関数を渡す際にはuseStateの変数と関数を渡す必要あり */}
-      <MemoForm text={text} onClickAdd={onClickAdd}  onChangeText={onChangeText}/>
-      <MemoList memos={memos} onClickDelete={onClickDelete} />
+      <Title title="簡単メモアプリ" />
+      <MemoForm addTodo={addTodo} />
+      <MemoList memos={memos} deleteTodo={deleteTodo} />
     </div>
   );
 };
